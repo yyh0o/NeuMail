@@ -1,0 +1,45 @@
+1.登录
+功能: 使用户登录服务器
+函数头: int login(char* ID, char* password);
+参数说明: ID 邮箱地址, password 用户密码
+
+1.1检查账户是否存在
+函数头: int idExist(char* ID);
+参数说明:同上
+
+1.2检查密码账户是否匹配
+函数头:int match(char* ID,char* password);
+参数说明:同上
+
+2.注册
+功能: 注册
+函数头: int regist(char* ID, char* password);
+参数说明: ID 邮箱地址, password 用户密码
+
+2.1检查账户是否存在
+同上1.1
+
+2.2检查账户密码规范
+功能: 
+函数头: int isAvailable(char* ID,char* password);
+参数说明:同上
+
+3.查看具体邮件
+函数头: void showMail(MAIL* mail);
+参数说明:MAIL* mail
+
+4.显示邮件列表
+函数头:void showMaliList(MAIL* mailList);
+参数说明:mailList 邮件列表
+
+4.1显示邮件缩略信息
+函数头: void showMailTitle(MAIL* mail);
+
+5.收藏邮件
+函数头:void collectMail(MAIL* mail);
+参数说明:
+
+6.添加/删除联系人
+函数头:
+
+
