@@ -39,7 +39,61 @@
 函数头:void collectMail(MAIL* mail);
 参数说明:
 
-6.添加/删除联系人
-函数头:
+6.添加联系人
+函数头:int addContact(char* ID,char* remark,CONTACT* contactList);
+参数说明:remark 联系人备注
+
+6.1删除联系人通过ID
+函数头:int rmContactByID(char* ID,CONTACT* contactList)
+
+6.2删除联系人通过备注
+函数头:int rmContactByRemark(char* remark,CONTACT* contactList);
+
+6.3.1查找联系人通过ID
+函数头:CONTACT* fdContactByID(char* ID,CONTACT* contactList) 
+返回值:找到的联系人
+
+6.3.2查找联系人通过备注
+函数头:CONTACT* fdContactByRemark(char* remark,CONTACT* contactList);
+返回值:找到的联系人
+
+6.4显示联系人
+void showContact(CONTACT* contactList);
+
+7.1显示黑名单
+void showBlackList(CONTACT* blackList);
+
+7.2.添加黑名单
+函数头:int addBlackList(char* ID,CONTACT* blackList);
+
+7.3删除黑名单通过ID
+函数头:int rmBlackListByID(char* ID,CONTACT* blackList)
+
+7.4查找黑名单通过ID
+函数头:CONTACT* fdBlackListByID(char* ID,CONTACT* blackList) 
+返回值:找到的黑名单
+
+8.1删除邮件
+函数头:int rmMail(MAIL* mail,MAIL* mailList)
+
+8.2定时删除邮件
+函数头:int autoRmMail(MAIL* mailList)
+备注:系统默认删除时长:
+
+//////////////////////////////////////////////8.2.1设置定时删除时间
+
+8.3标记是否被删除
+函数头:int markRmMail(MAIL* mailList,char* ID);
+
+8.4群删邮件
+函数头:int multRmMail(MAIL* mailList);
+
+
+
+
+
+
+
+
 
 
