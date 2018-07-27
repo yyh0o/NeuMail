@@ -1,0 +1,17 @@
+typedef struct USER
+{
+	char ID[25]; //用户ID(邮箱号)
+	char remark[50]; //初始化为空，用于储存备注
+	char password[20]; //密码
+	int state;//登陆状态
+}stUser;
+
+typedef struct MAIL
+{
+	char targetID[25]; //目标邮箱号
+	char originID[25]; //发件人邮箱号
+	char title[50]; //邮件主题
+	char content[500]; //邮件内容
+	int state;// 0收藏,1已读，2未读
+	char sendTime[20]// 发送时间
+}stMail;
