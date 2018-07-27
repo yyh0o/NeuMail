@@ -100,5 +100,7 @@ void showBlackList(CONTACT* blackList);
 9.4定时发邮件
 函数头:int autoDlMail(MAIL*mail,char* targetID,time_t time);
 
-
+9.5转发邮件
+函数头:void transmit(MAIL*mail,char* target)
+调用void deliverMail(MAIL* mail);
 
