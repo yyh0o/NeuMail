@@ -1,10 +1,16 @@
-typedef struct USER
+﻿typedef struct USER
 {
 	char ID[25]; //用户ID(邮箱号)
 	char remark[50]; //初始化为空，用于储存备注
 	char password[20]; //密码
 	int state;//登陆状态
 }stUser;
+
+typedef struct 
+{
+	char * ID;
+	MAILLIST mailList;
+}MAILBOX;
 
 typedef struct MAIL
 {
@@ -16,4 +22,20 @@ typedef struct MAIL
 	char sendTime[20]// 发送时间
 }stMail;
 
-typedef struct
+通用地址结构
+struct sockaddr
+{
+unsigned short sa_family;	//协议族
+char sa_data[14];            	//协议地址
+   };
+TCP/IP协议簇地址结构
+struct sockaddr_in
+{
+ short sin_family;             	//协议族如
+AF_INET　unsigned short sin_port; 	//端口号
+struct in_addr sin_addr;	//网络地址
+char sin_zero[8];             	//填充0
+     };
+struct in_addr{     unsigned long s_addr;    }
+
+
