@@ -17,7 +17,7 @@ typedef struct {
     };
     char title[50]; //邮件主题
     int state;// 0收藏,1已读，2未读
-    int sendstate;//发送状态，成功为1，失败为0，被拒收2
+    int sendstate;//发送状态，成功为1，被拒收2
 }MAILHEAD;
 typedef struct {
     char content[500];//保存用户击键内容
