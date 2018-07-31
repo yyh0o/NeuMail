@@ -14,8 +14,8 @@
 //  Copyright © 2018年 周彦錞. All rights reserved.
 //
 
-#define CONTACT_LIST "ContactList.txt"
-#define CONTACT_NUM "ContactListNum.txt"
+#define CONTACTLIST "client/ContactList.txt"
+#define CONTACTLISTNUM  "client/ContactListNum.txt"
 #include <stdio.h>
 #include <string.h>
 #include "contact.h"
@@ -31,7 +31,7 @@ int fdContactListByID(char* userID){
     number = getContactListNum();
     
     FILE* fp = NULL;
-    fp = fopen(CONTACT_LIST, "r");
+    fp = fopen(CONTACTLIST, "r");
     if(fp == NULL){
         return -1;
     }
@@ -57,7 +57,7 @@ int rmContactListByID(char* ID){
 //    printf("in rmBlackListByID=%d\n",number);
     
     FILE* fp;
-    fp = fopen(CONTACT_LIST, "r");
+    fp = fopen(CONTACTLIST, "r");
     if(fp == NULL){
         return -1;
     }
@@ -73,7 +73,7 @@ int rmContactListByID(char* ID){
     //    strcpy(list[a].ID,"*");
     
     FILE* fp1;
-    fp1 = fopen(CONTACT_LIST, "w+");
+    fp1 = fopen(CONTACTLIST, "w+");
     if(fp1 == NULL){
         return -1;
     }
@@ -98,7 +98,7 @@ int rmContactListByID(char* ID){
  ******************************/
 int addContactList(char* ContactListID){
     FILE* fp;
-    fp=fopen(CONTACT_LIST,"r");
+    fp=fopen(CONTACTLIST,"r");
     if(fp==NULL)
         return -1;
     struct CONTACT list[100] ={0};
@@ -118,7 +118,7 @@ int addContactList(char* ContactListID){
         }
     }
     FILE* fp1;
-    fp1=fopen(CONTACT_LIST,"w+");
+    fp1=fopen(CONTACTLIST,"w+");
     if(fp1==NULL)
         return -1;
     strcpy(list[number].ID,ContactListID);
@@ -132,7 +132,7 @@ int addContactList(char* ContactListID){
  *****************/
 int addContactListNum(void){
     FILE* fp;
-    fp = fopen(CONTACT_NUM, "r");
+    fp = fopen(CONTACTLISTNUM, "r");
     if(fp == NULL){
         return -1;
     }
@@ -141,7 +141,7 @@ int addContactListNum(void){
     fclose(fp);
     number++;
     FILE* fp1;
-    fp1 = fopen(CONTACT_NUM, "w+");
+    fp1 = fopen(CONTACTLISTNUM, "w+");
     fwrite(&number, sizeof(int), 1, fp1);
     fclose(fp1);
     return 0;
@@ -151,7 +151,7 @@ int addContactListNum(void){
  *****************/
 int reduceContactListNum(void){
     FILE* fp;
-    fp = fopen(CONTACT_NUM, "r");
+    fp = fopen(CONTACTLISTNUM, "r");
     if(fp == NULL){
         return -1;
     }
@@ -160,7 +160,7 @@ int reduceContactListNum(void){
     fclose(fp);
     number--;
     FILE* fp1;
-    fp1 = fopen(CONTACT_NUM, "w+");
+    fp1 = fopen(CONTACTLISTNUM, "w+");
     fwrite(&number, sizeof(int), 1, fp1);
     fclose(fp1);
     return 0;
@@ -171,7 +171,7 @@ int reduceContactListNum(void){
  *****************/
 int getContactListNum(void){
     FILE* fp;
-    fp = fopen(CONTACT_NUM, "r");
+    fp = fopen(CONTACTLISTNUM, "r");
     if(fp == NULL){
         return -1;
     }
@@ -185,7 +185,7 @@ int getContactListNum(void){
  ********************/
 int displayContactList(void){
     FILE* fp = NULL;
-    fp=fopen(CONTACT_LIST,"r");
+    fp=fopen(CONTACTLIST,"r");
     if(fp==NULL)
         return -1;
     struct CONTACT temp={0};
@@ -203,12 +203,12 @@ int displayContactList(void){
 int main(void){
     char id1[10],id2[10],id3[10];
     FILE* fp;
-    fp=fopen(CONTACT_LIST,"w+");
+    fp=fopen(CONTACTLIST,"w+");
     if(fp==NULL)
         return -1;
     fclose(fp);
     FILE* fp1;
-    fp1 = fopen(CONTACT_NUM, "w+");
+    fp1 = fopen(CONTACTLISTNUM, "w+");
     if(fp1 == NULL){
         return -1;
     }

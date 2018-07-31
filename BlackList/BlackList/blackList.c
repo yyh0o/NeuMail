@@ -6,8 +6,8 @@
 //  Copyright © 2018年 周彦錞. All rights reserved.
 //
 
-#define BLACK_LIST "BlackList.txt"
-#define BLACK_NUM "BlackListNum.txt"
+#define BLACKLIST "client/BlackList.txt"
+#define BLACKLISTNUM "client/BlackListNum.txt"
 #include <stdio.h>
 #include <string.h>
 #include "blackList.h"
@@ -23,7 +23,7 @@ int fdBlackListByID(char* userID){
     number = getBlackListNum();
 	
 	FILE* fp = NULL;
-    fp = fopen(BLACK_LIST, "r");
+    fp = fopen(BLACKLIST, "r");
     if(fp == NULL){
         return -1;
     }
@@ -49,7 +49,7 @@ int rmBlackListByID(char* ID){
 //    printf("in rmBlackListByID=%d\n",number);
  	
 	FILE* fp;
-    fp = fopen(BLACK_LIST, "r");
+    fp = fopen(BLACKLIST, "r");
     if(fp == NULL){
         return -1;
     }    
@@ -65,7 +65,7 @@ int rmBlackListByID(char* ID){
 //    strcpy(list[a].ID,"*");
 
 	FILE* fp1;
-    fp1 = fopen(BLACK_LIST, "w+");
+    fp1 = fopen(BLACKLIST, "w+");
     if(fp1 == NULL){
         return -1;
     }    
@@ -90,7 +90,7 @@ int rmBlackListByID(char* ID){
  ******************************/
 int addBlackList(char* blackListID){
     FILE* fp;
-    fp=fopen(BLACK_LIST,"r");
+    fp=fopen(BLACKLIST,"r");
     if(fp==NULL)
         return -1;
     struct blacklist list[100] ={0};
@@ -110,7 +110,7 @@ int addBlackList(char* blackListID){
         }
     }
     FILE* fp1;
-    fp1=fopen(BLACK_LIST,"w+");
+    fp1=fopen(BLACKLIST,"w+");
     if(fp1==NULL)
         return -1;
     strcpy(list[number].ID,blackListID);
@@ -124,7 +124,7 @@ int addBlackList(char* blackListID){
  *****************/
 int addBlackListNum(void){
     FILE* fp;
-    fp = fopen(BLACK_NUM, "r");
+    fp = fopen(BLACKLISTNUM, "r");
     if(fp == NULL){
         return -1;
     }
@@ -133,7 +133,7 @@ int addBlackListNum(void){
     fclose(fp);
     number++;
     FILE* fp1;
-    fp1 = fopen(BLACK_NUM, "w+");
+    fp1 = fopen(BLACKLISTNUM, "w+");
     fwrite(&number, sizeof(int), 1, fp1);
     fclose(fp1);
     return 0;
@@ -143,7 +143,7 @@ int addBlackListNum(void){
  *****************/
 int reduceBlackListNum(void){
     FILE* fp;
-    fp = fopen(BLACK_NUM, "r");
+    fp = fopen(BLACKLISTNUM, "r");
     if(fp == NULL){
         return -1;
     }
@@ -152,7 +152,7 @@ int reduceBlackListNum(void){
     fclose(fp);
     number--;
     FILE* fp1;
-    fp1 = fopen(BLACK_NUM, "w+");
+    fp1 = fopen(BLACKLISTNUM, "w+");
     fwrite(&number, sizeof(int), 1, fp1);
     fclose(fp1);
     return 0;
@@ -163,7 +163,7 @@ int reduceBlackListNum(void){
  *****************/
 int getBlackListNum(void){
     FILE* fp;
-    fp = fopen(BLACK_NUM, "r");
+    fp = fopen(BLACKLISTNUM, "r");
     if(fp == NULL){
         return -1;
     }
@@ -177,7 +177,7 @@ int getBlackListNum(void){
  ********************/
 int displayBlackList(void){
     FILE* fp = NULL;
-    fp=fopen(BLACK_LIST,"r");
+    fp=fopen(BLACKLIST,"r");
     if(fp==NULL)
         return -1;
     struct blacklist temp={0};
@@ -195,12 +195,12 @@ int displayBlackList(void){
 int main(void){
     char id1[10],id2[10],id3[10];
     FILE* fp;
-    fp=fopen(BLACK_LIST,"w+");
+    fp=fopen(BLACKLIST,"w+");
     if(fp==NULL)
         return -1;
     fclose(fp);
     FILE* fp1;
-    fp1 = fopen(BLACK_NUM, "w+");
+    fp1 = fopen(BLACKLISTNUM, "w+");
     if(fp1 == NULL){
         return -1;
     }
