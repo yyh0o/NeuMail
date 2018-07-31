@@ -28,7 +28,7 @@ typedef struct {
 struct blacklist{
     char ID[12];
 };
-int findIdInBlacklist(char* ID);
 int sfRecieve(char* filename);
-int throwMail(char* filename,int state)
+int throwMail(char* filename);
+int fcopy(char* fileCompleteName,char* filename);
 #endif //UNTITLED_MAILGOTOBOX_H
