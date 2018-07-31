@@ -7,7 +7,7 @@
 //
 
 #include <stdio.h>
-#define USERLIST userRegistrationlist.txt;
+#define PEIZHIWENJIAN "client/configurationFiles.txt"
 
 int configuration(char* userID,char* serverIP,char* serverPort);
 /********************
@@ -24,7 +24,7 @@ struct configurationFile{
 
 int configuration(char* userID,char* serverIP,char* serverPort){
     FILE* fp;
-    fp = fopen("/Users/kevin/Desktop/小学期/Project/Project/configurationFiles.txt","w+");//创建并读写文件
+    fp = fopen(PEIZHIWENJIAN,"w+");//创建并读写文件
     if(fp == NULL){
         return -1;
     }
