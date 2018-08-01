@@ -43,12 +43,17 @@ int selfInitiallization(char* userId,char*passWord){
     char temp3[50];
     char temp4[50];
     char temp5[50];
+    char temp6[50];
+    char temp7[50];
+
     memset(catlog,0,50);
     memset(temp1,0,50);
     memset(temp2,0,50);
     memset(temp3,0,50);
     memset(temp4,0,50);
     memset(temp5,0,50);
+    memset(temp6,0,50);
+    memset(temp7,0,50);
     strcpy(catlog,"server/");
     strcat(catlog,userId);
     strcpy(temp1,catlog);
@@ -56,27 +61,47 @@ int selfInitiallization(char* userId,char*passWord){
     strcpy(temp3,catlog);
     strcpy(temp4,catlog);
     strcpy(temp5,catlog);
+    strcpy(temp6,catlog);
+    strcpy(temp7,catlog);
     state=mkdir(catlog,0777);
     if(state<0)
         return -2;
+
     strcat(temp1,"/contacts.txt");
     FILE *fp1;
     fp1 = fopen(temp1, "w+");
     if (fp1==NULL)
         return -1;
     fclose(fp1);
+
     strcat(temp2,"/selfInformation.txt");
     FILE *fp2;
     fp2 = fopen(temp2, "w+");
     if (fp2==NULL)
         return -1;
     fclose(fp2);
+
     strcat(temp3,"/blackList.txt");
     FILE *fp3;
     fp3 = fopen(temp3, "w+");
     if (fp3==NULL)
         return -1;
     fclose(fp3);
+
+    strcat(temp6,"/blackListNum.txt");
+    FILE *fp6;
+    fp6 = fopen(temp6, "w+");
+    if (fp6==NULL)
+        return -1;
+    fclose(fp6);
+
+    strcat(temp7,"/contactNum.txt");
+    FILE *fp7;
+    fp7 = fopen(temp7, "w+");
+    if (fp7==NULL)
+        return -1;
+    fclose(fp7);
+
     strcat(temp4,"/mailBox");
     state=mkdir(temp4,0777);
     if(state<0)
