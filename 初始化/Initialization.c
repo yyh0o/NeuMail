@@ -42,17 +42,20 @@ int selfInitiallization(char* userId,char*passWord){
     char temp2[50];
     char temp3[50];
     char temp4[50];
+    char temp5[50];
     memset(catlog,0,50);
     memset(temp1,0,50);
     memset(temp2,0,50);
     memset(temp3,0,50);
     memset(temp4,0,50);
+    memset(temp5,0,50);
     strcpy(catlog,"server/");
     strcat(catlog,userId);
     strcpy(temp1,catlog);
     strcpy(temp2,catlog);
     strcpy(temp3,catlog);
     strcpy(temp4,catlog);
+    strcpy(temp5,catlog);
     state=mkdir(catlog,0777);
     if(state<0)
         return -2;
@@ -78,12 +81,20 @@ int selfInitiallization(char* userId,char*passWord){
     state=mkdir(temp4,0777);
     if(state<0)
         return -2;
+    strcpy(temp5,temp4);
     strcat(temp4,"/list.txt");
     FILE *fp4;
     fp4 = fopen(temp4, "w+");
     if (fp4==NULL)
         return -1;
     fclose(fp4);
+
+    strcat(temp5,"/mailNumber.txt");
+    FILE *fp5;
+    fp5 = fopen(temp5, "w+");
+    if (fp5==NULL)
+        return -1;
+    fclose(fp5);
     fwUser(userId,passWord);
     return 0;
 

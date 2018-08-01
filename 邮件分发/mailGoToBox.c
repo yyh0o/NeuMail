@@ -54,15 +54,17 @@ int sfRecieve(char* filename){
     fwrite(&temphead,sizeof(MAILHEAD),1,fp3);
     fwrite(&tempbody,sizeof(MAILBODY),1,fp3);
     fclose(fp3);
-    int i=throwMail(filename);
-    if(i==-1){
-        return -1;
+    if(temphead.sendstate==1){
+        int i=throwMail(filename);
+        if(i==-1){
+            return -1;
+        }
     }
     fcopy(fileCompleteName,filename);
     return 0;
 }
 /**************************
- * 投递函数，负责将邮件投递到目标邮箱且发送一份回到个人邮箱,将邮件头存入邮件列表中
+ * 投递函数，负责将邮件投递到目标邮箱,将邮件头存入邮件列表中
  * @param filename 邮件名字
  *
  * @return -1 打开文件错误
@@ -86,7 +88,11 @@ int throwMail(char* filename){
     strcat(targetDir, temp.targetID);
     strcat(targetDir,"/mailBox/");
     char listAdress[50];
-    strcpy(listAdress,"list.txt");
+    char numAdress[50];
+    strcpy(listAdress,targetDir);
+    strcpy(numAdress,targetDir);
+    strcat(listAdress,"list.txt");
+    strcat(numAdress,"mailNumber.txt");
     strcat(targetDir,filename);
     rename(fileCompleteName, targetDir);
     FILE* fp1;
@@ -95,6 +101,21 @@ int throwMail(char* filename){
         return -1;
     fwrite(&temp,sizeof(MAILHEAD),1,fp1);
     fclose(fp1);
+
+    int number=0;
+    FILE* fp2;
+    fp2=fopen(listAdress,"r");
+    if(fp2==NULL)
+        return -1;
+    fread(&number,sizeof(int),1,fp2);
+    fclose(fp2);
+    number++;
+    FILE* fp3;
+    fp3=fopen(listAdress,"w+");
+    if(fp3==NULL)
+        return -1;
+    fwrite(&number,sizeof(int),1,fp3);
+    fclose(fp3);
     return 0;
 }
 int fcopy(char* fileCompleteName,char* filename){
@@ -112,6 +133,9 @@ int fcopy(char* fileCompleteName,char* filename){
     strcpy(targetDir,"server/");
     strcat(targetDir, temp.originID);
     strcat(targetDir,"/mailBox/");
+    char numAdress[50];
+    strcpy(numAdress,targetDir);
+    strcat(numAdress,"mailNumber.txt");
     strcat(targetDir,filename);
     FILE* fp1;
     fp1=fopen(targetDir,"w+");
@@ -120,5 +144,21 @@ int fcopy(char* fileCompleteName,char* filename){
     fwrite(&temp,sizeof(MAILHEAD),1,fp1);
     fwrite(&tempbody,sizeof(MAILBODY),1,fp1);
     fclose(fp1);
+
+    int number=0;
+    FILE* fp2;
+    fp2=fopen(listAdress,"r");
+    if(fp2==NULL)
+        return -1;
+    fread(&number,sizeof(int),1,fp2);
+    fclose(fp2);
+    number++;
+    FILE* fp3;
+    fp3=fopen(listAdress,"w+");
+    if(fp3==NULL)
+        return -1;
+    fwrite(&number,sizeof(int),1,fp3);
+    fclose(fp3);
+    return 0;
 
 }
