@@ -18,7 +18,7 @@ int addContactNum(void);//添加联系人人数
 int getContactNum(void);//得到联系人人数
 int reduceContactNum(void);//减少联系人人数
 int fdContactListByID(char* userID);//找到联系人内相应的ID
-int addContactList(char* blackListID);//添加联系人
+int addContactList(char* ContactListID);//添加联系人
 int rmContactListByID(char* ID);//移除联系人
 int displayContactList(void);//显示联系人
 
