@@ -61,8 +61,12 @@ int clientInitiallization() {
      if (fp6==NULL)
          return -1;
      fclose(fp6);
+
+	 FILE *fp7;
+     fp7 = fopen("client/mailBox/mailNumber.txt", "w+");//建立邮箱个数文件
+     if (fp7==NULL)
+         return -1;
+     fclose(fp7);
     return 0;
 }
-int main(){
-    clientInitiallization();
-}
+
