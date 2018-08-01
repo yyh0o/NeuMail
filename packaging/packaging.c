@@ -36,7 +36,6 @@ int packaging(char* targetID,char* title,char* content){
     time(&timep);
     strcpy(head.data, asctime(gmtime(&timep)));
     strcpy(head.title, title);
-    head.state = 0;
     strcpy(title1,"client/TemporaStorage/");
     strcat(title1,title);
     strcat(title1,".txt");
