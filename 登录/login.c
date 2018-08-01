@@ -77,3 +77,31 @@ void moState(char* ID){
 void logout(char* ID){
     moState(ID);
 }
+/***************************
+检查用户是否存在
+return 0 存在
+      -1 文件打开失败
+	  -2 用户不存在
+
+
+
+**************************/
+int checkID(char* ID){
+    REGISTERINFOR temp;
+    FILE* fp;
+    fp=fopen(USERLIST,"r");
+    if(fp==NULL)
+        return -1;
+    int i=0;
+    for(i=0;i<=getUserNum()-1;i++){
+        fread(&temp,sizeof(REGISTERINFOR),1,fp);
+        if(strcmp(temp.userId,ID)==0){
+			 fclose(fp);
+            return 0;
+    }
+    fclose(fp);
+    return -2;
+
+
+
+}
