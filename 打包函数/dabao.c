@@ -108,10 +108,10 @@ void dabaoClientSend(char *ID){
     strcpy(temp2,lujing);
     strcpy(temp3,lujing);
     strcpy(temp4,lujing);
-    strcat(temp1,"/blackList.txt");
-    strcat(temp2,"/blackListNum.txt");
-    strcat(temp3,"/contacts.txt");
-    strcat(temp4,"/contactNum.txt");
+    strcat(temp1,"/BlackList.txt");
+    strcat(temp2,"/BlackListNum.txt");
+    strcat(temp3,"/ContactList.txt");
+    strcat(temp4,"/ContactListNum.txt");
     FILE* fp;
     fp=fopen(temp2,"r");
     fread(&bllistnumber,sizeof(int),1,fp);
@@ -145,7 +145,7 @@ void dabaoClientSend(char *ID){
     fwrite(&conlist,sizeof(struct CONTACT),connumber,nb);
     fclose(nb);
 }
-void clientJieya(char *ID){
+void clientJieya(){
     MAILHEAD mailhead[100];
     MAILBODY mailbody[100];
     int mailnumber=0;
@@ -175,11 +175,10 @@ void clientJieya(char *ID){
     strcat(lujing,"/mailBox/");
     strcpy(temp5,lujing);
     strcpy(temp6,lujing);
-    strcat(temp1,"/blackList.txt");
-    strcat(temp2,"/blackListNum.txt");
-    strcat(temp3,"/contacts.txt");
-    strcat(temp4,"/contactNum.txt");
-    strcat(lujing,ID);
+     strcat(temp1,"/BlackList.txt");
+    strcat(temp2,"/BlackListNum.txt");
+    strcat(temp3,"/ContactList.txt");
+    strcat(temp4,"/ContactListNum.txt");
     strcat(temp5,"list.txt");
     strcat(temp6,"mailNumber.txt");
     strcpy(lujing,"*.txt");
@@ -252,7 +251,7 @@ void serverJieya(char *ID){
     strcat(temp2,"/blackListNum.txt");
     strcat(temp3,"/contacts.txt");
     strcat(temp4,"/contactNum.txt");
-    strcpy(lujing,"*.txt");
+	strcat(lujing,"/dabao.txt");
 
     FILE* fp;
     fp=fopen(lujing,"r");
