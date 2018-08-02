@@ -8,7 +8,6 @@
 #include<string.h>
 #include <sys/stat.h>
 #include <sys/types.h>
-#define MAILNUMBER "client/mailNumber.txt"
 #define BLACKLIST "client/BlackList.txt"
 #define BLACKLISTNUM "client/BlackListNum.txt"
 #define PEIZHIWENJIAN "client/configurationFiles.txt"

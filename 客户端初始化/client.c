@@ -12,12 +12,7 @@ int clientInitiallization() {
         return -2;
     int number=0;
 
-    FILE *fp;
-    fp = fopen(MAILNUMBER, "w+");//建立邮件个数文件
-     if (fp==NULL)
-         return -1;
-     fwrite(&number,sizeof(int),1,fp);
-    fclose(fp);
+   
 
     FILE *fp1;
     fp1 = fopen(BLACKLIST, "w+");//建立黑名单文件
