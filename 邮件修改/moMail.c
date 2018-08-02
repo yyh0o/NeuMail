@@ -37,7 +37,7 @@ int setMailNumber(char *ID){
         return -1;
     }
     fp1=fopen(completeName,"w+");
-    fread(&number,sizeof(int),1,fp1);
+    fwrite(&number,sizeof(int),1,fp1);
     fclose(fp);
     return 0;
 }
