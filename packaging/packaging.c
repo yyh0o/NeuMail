@@ -36,7 +36,7 @@ int packaging(char* targetID,char* title,char* content){
     time(&timep);
     strcpy(head.data, asctime(gmtime(&timep)));
     strcpy(head.title, title);
-    strcpy(title1,"client/TemporaStorage/");
+    strcpy(title1,"client/TemporaryStorage/");
     strcat(title1,title);
     strcat(title1,".txt");
     FILE* fp1;
@@ -59,7 +59,7 @@ int separate(char* title){
 //    configuration("111@111","1212.22.22.2","2222");
 //    packaging("123123","34343433","3423243423");
     char title1[50];
-    strcpy(title1,"client/TemporaStorage/");
+    strcpy(title1,"client/TemporaryStorage/");
     strcat(title1,title);
     strcat(title1,".txt");
     struct MAILHEAD head;
