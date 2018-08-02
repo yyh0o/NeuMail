@@ -1,0 +1,32 @@
+MAILHEAD  temp1[100];
+    
+    int number=0;
+    FILE* fp2;
+    fp2=fopen(numAdress,"r");
+    if(fp2==NULL)
+        return -1;
+    fread(&number,sizeof(int),1,fp2);
+    fclose(fp2);
+    
+    FILE* fp1;
+    fp1=fopen(listAdress,"r");
+    if(fp1==NULL)
+        return -1;
+    fread(temp1,sizeof(MAILHEAD),number,fp1);
+    fclose(fp1);
+    strcpy(temp1[number].targetID,temp.targetID); //目标邮箱号
+    strcpy(temp1[number].originID,temp.originID);//发件人邮箱号
+    strcpy(temp1[number].data,temp.data); 
+    strcpy(temp1[number].title,temp.title);  //邮件主题
+    temp1[number].state=temp.state;// 0收藏,1已读，2未读
+    temp1[number].sendstate=temp.sendstate;//发送状态，成功为1，被拒收2
+    
+    
+    
+    FILE* fp4;
+    fp4=fopen(listAdress,"w+");
+    if(fp4==NULL)
+        return -1;
+    fwrite(temp1,sizeof(MAILHEAD),number++,fp4);
+    fclose(fp4);
+    
