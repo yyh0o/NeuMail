@@ -104,14 +104,14 @@ int throwMail(char* filename){
 
     int number=0;
     FILE* fp2;
-    fp2=fopen(listAdress,"r");
+    fp2=fopen(numAdress,"r");
     if(fp2==NULL)
         return -1;
     fread(&number,sizeof(int),1,fp2);
     fclose(fp2);
     number++;
     FILE* fp3;
-    fp3=fopen(listAdress,"w+");
+    fp3=fopen(numAdress,"w+");
     if(fp3==NULL)
         return -1;
     fwrite(&number,sizeof(int),1,fp3);
@@ -147,14 +147,14 @@ int fcopy(char* fileCompleteName,char* filename){
 
     int number=0;
     FILE* fp2;
-    fp2=fopen(listAdress,"r");
+    fp2=fopen(numAdress,"r");
     if(fp2==NULL)
         return -1;
     fread(&number,sizeof(int),1,fp2);
     fclose(fp2);
     number++;
     FILE* fp3;
-    fp3=fopen(listAdress,"w+");
+    fp3=fopen(numAdress,"w+");
     if(fp3==NULL)
         return -1;
     fwrite(&number,sizeof(int),1,fp3);
